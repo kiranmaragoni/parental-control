@@ -1,0 +1,9 @@
+Package: parental-control-all
+Version: 1.0
+Section: custom
+Priority: optional
+Architecture: amd64
+Essential: no
+Installed-Size: 1024
+Maintainer: Vasilii Vazhesov <vasilii.vazhesov@gmail.com>
+Description: Allows to control user login time and calculate consumed time in *nux OS. Schedule daemon and web interface bundle.

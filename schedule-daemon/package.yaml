@@ -1,0 +1,92 @@
+name:                parental-control
+version:             0.1.0.0
+github:              "githubuser/parental-control"
+license:             MIT
+author:              "Vasilii Vazhesov"
+maintainer:          "example@example.com"
+copyright:           "Vasilii Vazhesov"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/parental-control#readme>
+
+dependencies:
+ - base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+    - process
+    - text
+    - time
+    - yaml
+    - containers
+    - base
+    - aeson
+    - aeson-pretty
+    - mtl
+    - directory
+    - filepath
+    - bytestring
+    - text-format-simple
+    - sqlite-simple
+    - unordered-containers
+
+executables:
+  parental-control:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+     - parental-control
+
+  parental-control-web:
+    main:                Main.hs
+    source-dirs:         web-app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - parental-control
+      - servant
+      - servant-server
+      - text
+      - containers
+      - base
+      - aeson
+      - mtl
+      - directory
+      - bytestring
+      - wai
+      - warp
+      - time
+      - sqlite-simple
+
+tests:
+  parental-control-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - parental-control
+    - hspec
+    - time
+    - containers
+    - mtl
+    - sqlite-simple
+#    - math

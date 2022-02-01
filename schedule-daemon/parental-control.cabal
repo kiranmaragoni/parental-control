@@ -1,0 +1,117 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 00ebb8691f0981b52a962b8935701f5265dbb8f3bf6b637c79e0582c6b5a76f0
+
+name:           parental-control
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/parental-control#readme>
+homepage:       https://github.com/githubuser/parental-control#readme
+bug-reports:    https://github.com/githubuser/parental-control/issues
+author:         Vasilii Vazhesov
+maintainer:     example@example.com
+copyright:      Vasilii Vazhesov
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/parental-control
+
+library
+  exposed-modules:
+      AppState
+      Checking
+      CliOpts
+      Config
+      DbLog
+      Lib
+      LinuxCommand
+      StateLogger
+      WindowsCommand
+  other-modules:
+      Paths_parental_control
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
+    , aeson-pretty
+    , base
+    , bytestring
+    , containers
+    , directory
+    , filepath
+    , mtl
+    , process
+    , sqlite-simple
+    , text
+    , text-format-simple
+    , time
+    , unordered-containers
+    , yaml
+  default-language: Haskell2010
+
+executable parental-control
+  main-is: Main.hs
+  other-modules:
+      Paths_parental_control
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , parental-control
+  default-language: Haskell2010
+
+executable parental-control-web
+  main-is: Main.hs
+  other-modules:
+      Paths_parental_control
+  hs-source-dirs:
+      web-app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base
+    , bytestring
+    , containers
+    , directory
+    , mtl
+    , parental-control
+    , servant
+    , servant-server
+    , sqlite-simple
+    , text
+    , time
+    , wai
+    , warp
+  default-language: Haskell2010
+
+test-suite parental-control-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      AppStateSpec
+      ConfigSpec
+      DbLogSpec
+      LogicSpec
+      StateLoggerSpec
+      WindowsCommandSpec
+      Paths_parental_control
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , hspec
+    , mtl
+    , parental-control
+    , sqlite-simple
+    , time
+  default-language: Haskell2010
